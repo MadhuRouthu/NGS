@@ -3,8 +3,17 @@ os: linux
 files:
   - source: /ngsportal.main
     destination: /opt/ngsportal.main
+
 hooks:
   AfterInstall:
     - location: scripts/install.sh
+      timeout: 180
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_application.sh
+      timeout: 180
+      runas: root
+  ValidateService:
+    - location: scripts/validate_service.sh
       timeout: 180
       runas: root
