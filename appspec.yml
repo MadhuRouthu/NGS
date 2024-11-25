@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /ngsportal.main
+    destination: /opt/ngsportal.main
+hooks:
+  AfterInstall:
+    - location: scripts/install.sh
+      timeout: 180
+      runas: root
