@@ -1,12 +1,18 @@
 version: 0.0
 os: linux
 files:
-  - source:  ngsportal.main
+  - source: ngsportal.main
     destination: /home/ec2-user/deployment/scripts
-
 hooks:
-  AfterInstall:
-    - location: /home/ec2-user/deployment/scripts
+  BeforeInstall:
+    - location: /home/ec2-user/deployment/scripts/install.sh
       timeout: 300
       runas: root
-  
+  AfterInstall:
+    - location: /home/ec2-user/deployment/scripts/validate_service.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: /home/ec2-user/deployment/scripts/start_application.sh
+      timeout: 300
+      runas: root
