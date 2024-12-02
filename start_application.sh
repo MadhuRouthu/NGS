@@ -1,5 +1,5 @@
 hooks:
   ApplicationStart:
-    - location: scripts/start_application.sh
+    - location: /home/ec2-user/deployment/scripts/start_application.sh
       timeout: 300
       runas: root
